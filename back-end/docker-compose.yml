@@ -4,20 +4,23 @@ services:
     image: postgres
     restart: always
     environment:
-      POSTGRES_PASSWORD: your_password
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
       - '5432:5432'
     volumes:
-      - ./data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
+
   app:
     build: .
     depends_on:
       - db
     ports:
-      - '3000:3000'
-    environment:
-      DB_HOST: db
-      DB_PORT: 5432
-      DB_USERNAME: postgres
-      DB_PASSWORD: your_password
-      DB_NAME: postgres
+      - '9870:9870'
+    env_file:
+      - .env
+    volumes:
+      - app_data:/app/mentacare/back-end/data
+
+volumes:
+  postgres_data:
+  app_data:
