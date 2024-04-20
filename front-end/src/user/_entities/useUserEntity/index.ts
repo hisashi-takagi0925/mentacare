@@ -15,9 +15,13 @@ export const useUserEntity = () => {
       lastName: "",
       email: "",
     },
+    mode: "onChange",
   });
 
+  const emailRegister = { ...methods.register("email") };
+
   return {
+    emailRegister,
     methods,
   };
 };
