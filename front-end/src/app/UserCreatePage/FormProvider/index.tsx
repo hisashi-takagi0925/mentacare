@@ -1,4 +1,4 @@
-import { useUserEntity } from "@/user/_entities/useUserEntity";
+import { useUserEntity } from "@/_domains/user/_entities/useUserEntity";
 import { ReactNode } from "react";
 import { FormProvider as Form } from "react-hook-form";
 

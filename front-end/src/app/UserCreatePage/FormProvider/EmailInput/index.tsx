@@ -1,4 +1,4 @@
-import { useUserEntity } from "@/user/_entities/useUserEntity";
+import { useUserEntity } from "@/_domains/user/_entities/useUserEntity";
 
 export const EmailInput = () => {
   const { emailRegister } = useUserEntity();
