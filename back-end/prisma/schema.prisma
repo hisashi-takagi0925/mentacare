@@ -139,3 +139,19 @@ enum Role {
   DOCTOR
   PATIENT
 }
+
+model Task {
+  id        Int      @id @default(autoincrement())
+  name      String
+  dueDate   String   @db.VarChar(50)
+  status    Status   @default(NOT_STARTED)
+  desc      String?
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+  updatedAt DateTime @updatedAt @db.Timestamp(0)
+}
+
+enum Status {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+}

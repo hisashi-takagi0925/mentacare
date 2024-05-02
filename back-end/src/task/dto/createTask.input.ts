@@ -4,7 +4,7 @@ import { IsDateString, IsNotEmpty } from 'class-validator';
 @InputType()
 export class CreateTaskInput {
   @Field()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'タスク名は必須入力です' })
   name: string;
 
   @Field()
