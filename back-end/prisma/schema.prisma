@@ -109,11 +109,14 @@ model AnalyticsReport {
 
 model User {
   id        Int      @id @default(autoincrement())
+  firstname String   @db.VarChar(50)
+  lastname  String   @db.VarChar(50)
   email     String   @unique @db.VarChar(255)
   password  String   @db.VarChar(255)
   role      Role
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  task      Task[]
 }
 
 enum Gender {
@@ -148,6 +151,8 @@ model Task {
   desc      String?
   createdAt DateTime @default(now()) @db.Timestamp(0)
   updatedAt DateTime @updatedAt @db.Timestamp(0)
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 enum Status {
